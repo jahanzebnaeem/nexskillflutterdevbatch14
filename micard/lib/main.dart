@@ -18,17 +18,18 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.teal.shade900,
         ),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircleAvatar(
               backgroundColor: Colors.blue,
-              backgroundImage: NetworkImage(
-                  "https://media.licdn.com/dms/image/D4D03AQHeEi2AZfyOJQ/profile-displayphoto-shrink_800_800/0/1673967544770?e=2147483647&v=beta&t=qyCXnCL9OsVdEqsR1N1msxAeZNwEp14P3EdpVFltxsE"),
+              backgroundImage: AssetImage("images/mypic.jpeg"),
               radius: 100.0,
             ),
             Text(
               "Jahanzeb Naeem",
               style: TextStyle(
-                fontSize: 35.0,
+                fontFamily: "Pacifico",
+                fontSize: 40.0,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
@@ -39,6 +40,61 @@ class MyApp extends StatelessWidget {
                 fontSize: 30.0,
                 color: Colors.white,
                 fontWeight: FontWeight.w400,
+              ),
+            ),
+            Divider(
+              thickness: 5.0,
+              indent: 100.0,
+              endIndent: 100.0,
+              height: 30.0,
+              color: Colors.teal.shade700,
+            ),
+            Container(
+              color: Colors.white,
+              margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 10.0),
+              padding: EdgeInsets.all(
+                10.0,
+              ),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.phone,
+                    size: 30.0,
+                    color: Colors.teal.shade600,
+                  ),
+                  SizedBox(width: 20.0),
+                  Text(
+                    "1234567890",
+                    style: TextStyle(
+                      color: Colors.teal.shade600,
+                      fontSize: 20.0,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              color: Colors.white,
+              margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 10.0),
+              padding: EdgeInsets.all(
+                10.0,
+              ),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.email,
+                    size: 30.0,
+                    color: Colors.teal.shade600,
+                  ),
+                  SizedBox(width: 20.0),
+                  Text(
+                    "test@test.com",
+                    style: TextStyle(
+                      color: Colors.teal.shade600,
+                      fontSize: 20.0,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
