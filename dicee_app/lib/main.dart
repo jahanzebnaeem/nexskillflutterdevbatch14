@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +34,7 @@ class DiceeApp extends StatefulWidget {
 }
 
 class _DiceeAppState extends State<DiceeApp> {
-  var leftDiceImage = 1;
+  int leftDiceImage = 1;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -44,10 +45,12 @@ class _DiceeAppState extends State<DiceeApp> {
               padding: const EdgeInsets.fromLTRB(8.0, 8.0, 4.0, 8.0),
               child: GestureDetector(
                 onTap: () {
+                  int randomVal = Random().nextInt(6) + 1;
+                  // print(randomVal);
                   setState(() {
-                    leftDiceImage = 2;
+                    leftDiceImage = randomVal;
                   });
-                  print("Left button pressed with no $leftDiceImage");
+                  // print("Left button pressed with no $leftDiceImage");
                 },
                 child: Image(
                   image: AssetImage("images/dice$leftDiceImage.png"),
