@@ -35,6 +35,15 @@ class DiceeApp extends StatefulWidget {
 
 class _DiceeAppState extends State<DiceeApp> {
   int leftDiceImage = 1;
+  int rightDiceImage = 1;
+
+  void rollDice() {
+    setState(() {
+      leftDiceImage = Random().nextInt(6) + 1;
+      rightDiceImage = Random().nextInt(6) + 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -45,12 +54,7 @@ class _DiceeAppState extends State<DiceeApp> {
               padding: const EdgeInsets.fromLTRB(8.0, 8.0, 4.0, 8.0),
               child: GestureDetector(
                 onTap: () {
-                  int randomVal = Random().nextInt(6) + 1;
-                  // print(randomVal);
-                  setState(() {
-                    leftDiceImage = randomVal;
-                  });
-                  // print("Left button pressed with no $leftDiceImage");
+                  rollDice();
                 },
                 child: Image(
                   image: AssetImage("images/dice$leftDiceImage.png"),
@@ -61,8 +65,13 @@ class _DiceeAppState extends State<DiceeApp> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(4.0, 8.0, 8.0, 8.0),
-              child: Image(
-                image: AssetImage("images/dice1.png"),
+              child: GestureDetector(
+                onTap: () {
+                  rollDice();
+                },
+                child: Image(
+                  image: AssetImage("images/dice$rightDiceImage.png"),
+                ),
               ),
             ),
           ),
