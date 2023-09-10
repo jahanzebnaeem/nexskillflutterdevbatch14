@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'quiz_brain.dart';
+
 void main() {
   runApp(const Quizzer());
 }
@@ -31,17 +33,36 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Icon> results = [
-    Icon(
-      Icons.check,
-      color: Colors.green,
-      size: 30.0,
-    ),
-    Icon(
-      Icons.close,
-      color: Colors.red,
-      size: 30.0,
-    ),
+    // Icon(
+    //   Icons.check,
+    //   color: Colors.green,
+    //   size: 30.0,
+    // ),
+    // Icon(
+    //   Icons.close,
+    //   color: Colors.red,
+    //   size: 30.0,
+    // ),
   ];
+
+  // List<String> question = [
+  //   'You can lead a cow down stairs but not up stairs.',
+  //   'Approximately one quarter of human bones are in the feet.',
+  //   'A slug\'s blood is green.'
+  // ];
+
+  // List<bool> answer = [false, true, true];
+
+  // List<Question> q = [
+  //   Question('You can lead a cow down stairs but not up stairs.', false),
+  //   Question('Approximately one quarter of human bones are in the feet.', true),
+  //   Question('A slug\'s blood is green.', true)
+  // ];
+
+  // int questionNumber = 0;
+
+  QuizBrain quizBrain = QuizBrain();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -54,7 +75,10 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                'This is where the question text will go.',
+                // 'This is where the question text will go.',
+                // question[questionNumber],
+                // quizBrain.q[questionNumber].question,
+                quizBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -80,6 +104,29 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
+                bool actualAns = quizBrain.getQuestionAnswer();
+                if (actualAns == true) {
+                  results.add(
+                    Icon(
+                      Icons.check,
+                      color: Colors.green,
+                      size: 30.0,
+                    ),
+                  );
+                } else {
+                  results.add(
+                    Icon(
+                      Icons.close,
+                      color: Colors.red,
+                      size: 30.0,
+                    ),
+                  );
+                }
+                setState(() {
+                  // questionNumber = questionNumber + 1;
+                  quizBrain.nextQuestion();
+                });
+                // print(questionNumber);
               },
             ),
           ),
